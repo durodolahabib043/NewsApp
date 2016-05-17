@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+<!--    <string-array name="dash_board">
+        <item>A</item>
+        <item>Almak</item>
+        <item>Anlamak</item>
+        <item>Anlasmak</item>
+        <item>Anlatmak</item>
+        <item>Ayrilmak</item>
+    </string-array>
+
+
+    <string-array name="before_you_file">
+        <item>B</item>
+        <item>bbbb</item>
+        <item>bbbbfg</item>
+        <item>bbbbbbb</item>
+        <item>bbbbbbbb</item>
+        <item>bbbbbbb</item>
+    </string-array>-->
+</resources>
