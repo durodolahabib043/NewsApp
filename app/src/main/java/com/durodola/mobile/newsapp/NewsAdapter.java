@@ -3,6 +3,7 @@ package com.durodola.mobile.newsapp;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.PersonViewHold
     public void onBindViewHolder(PersonViewHolder holder, final int position) {
 
         holder.nametxt_cardview.setText(topStoriesArrayList.get(position).getTitle());
+        holder.cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+        Log.e("LINK", topStoriesArrayList.get(position).getLink());
         String html = "<img SRC=\"whatever\">whatever</img>";
         String imgRegex = "<[iI][mM][gG][^>]+[sS][rR][cC]\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>";
 
@@ -63,7 +72,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.PersonViewHold
         }*/
         if (m.find()) {
             String imgSrc = m.group(1);
-          //  holder.lgatxt_cardview.setText(imgSrc);
+            //  holder.lgatxt_cardview.setText(imgSrc);
             Picasso.with(this.context).load(imgSrc).into(holder.personPhoto);
         }
 
@@ -110,7 +119,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.PersonViewHold
 
     }
 
-    public static class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class PersonViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         TextView lgatxt_cardview;
         TextView nametxt_cardview;
@@ -122,16 +131,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.PersonViewHold
             lgatxt_cardview = (TextView) itemView.findViewById(R.id.name_cardview);
             nametxt_cardview = (TextView) itemView.findViewById(R.id.lga_cardview);
             personPhoto = (ImageView) itemView.findViewById(R.id.person_photo);
-            itemView.setOnClickListener(this);
-        }
+            //  itemView.setOnClickListener(this);
 
-        @Override
+        }
+// hbaib
+      /*  @Override
         public void onClick(View v) {
             if (mItemClickListener != null) {
                 mItemClickListener.onItemClick(getAdapterPosition(), v);
 
             }
-        }
+        }*/
     }
 
     public void SetOnItemCLickListener(MyItemClickListener mItemClickListener) {

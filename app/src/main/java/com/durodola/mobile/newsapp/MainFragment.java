@@ -3,10 +3,12 @@ package com.durodola.mobile.newsapp;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -22,7 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
-public class MainFragment extends Fragment {
+public class MainFragment extends AbstractFragment implements RecyclerView.OnItemTouchListener {
     String tagname;
     RecyclerView rv;
     LinearLayoutManager llm;
@@ -54,6 +56,32 @@ public class MainFragment extends Fragment {
         new LoadFeed().execute("http://www.cbc.ca/cmlink/rss-topstories");
         return view;
     }
+
+
+    @Override
+    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+    }
+
+    @Override
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+    }
+    protected void SwitchDisplayfragmentNNNNN(Fragment fragment) {
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        //  transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+        transaction.replace(R.id.mylayout2, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 
     class LoadFeed extends AsyncTask<String, Void, ArrayList<TopStories>> {
 
@@ -128,9 +156,15 @@ public class MainFragment extends Fragment {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
 
-            Log.e("RESULT", " " + result);
+            Log.e("RESULT", " " + result.get(1).getLink());
             NewsAdapter adapter = new NewsAdapter(getContext(), result);
             rv.setAdapter(adapter);
+            adapter.SetOnItemCLickListener(new NewsAdapter.MyItemClickListener() {
+                @Override
+                public void onItemClick(int position, View v) {
+                    SwitchDisplayfragment(new TopNewsDetails());
+                }
+            });
 
 
         }
