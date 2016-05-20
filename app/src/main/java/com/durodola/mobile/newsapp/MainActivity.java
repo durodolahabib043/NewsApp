@@ -3,6 +3,7 @@ package com.durodola.mobile.newsapp;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     View view_Group;
+    Fragment fragment = null;
 
 
     @Override
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpDrawer() {
         //  mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         /*
-		 * mDrawerLayout.setScrimColor(getResources().getColor(
+         * mDrawerLayout.setScrimColor(getResources().getColor(
 		 * android.R.color.transparent));
 		 */
         // mDrawerLayout.setDrawerListener(mDrawerListener);
@@ -127,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (groupPosition) {
 
 				/*
-				 * Here add your fragment class name for each case menu (eg.
+                 * Here add your fragment class name for each case menu (eg.
 				 * Layout1, layout2 in screen) you can add n number of classes
 				 * to the swithch case Also when you add the class name here,
 				 * also add the corresponding name to the array list
@@ -135,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     // dash board
                     case 0:
                         //   fragment = new One();
+                        fragment = MainFragment.newInstance();
                         break;
 
                     // before you file
@@ -142,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                         switch (childPosition) {
                             case 0:
                                 //  fragment = new One();
+                                fragment = MainFragment.newInstance();
                                 break;
                             case 1:
                                 //   fragment = new One();
@@ -157,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                         switch (childPosition) {
                             case 0:
                                 //    fragment = new One();
+                                fragment = MainFragment.newInstance();
                                 break;
                             case 1:
                                 //  fragment = new One();
@@ -246,10 +251,21 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         break;
                 }
-             /*   getFragmentManager().beginTransaction()
+                //  expListView.setItemChecked(childPosition, true);
+
+              /* *//* FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                //  transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+                transaction.replace(R.id.mylayout2, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();*//*
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.mylayout2 , fragment);
+                transaction.commit();*/
+                getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frame_container, fragment).commit();
                 expListView.setItemChecked(childPosition, true);
-                mDrawerLayout.closeDrawer(expListView);*/
+                Drawer.closeDrawer(expListView);
                 return false;
             }
         });

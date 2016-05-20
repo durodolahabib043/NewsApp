@@ -8,8 +8,13 @@
     android:elevation="7dp"
     android:fitsSystemWindows="true"
     tools:context="com.durodola.mobile.newsapp.MainActivity">
+    <!--  <FrameLayout
+          android:id="@+id/frame_container"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />-->
 
     <FrameLayout
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -45,6 +50,7 @@
 
 
     <include layout="@layout/content_main" />
+
     <ExpandableListView
         android:id="@+id/list_slidermenu"
         android:layout_width="260dp"
@@ -54,19 +60,18 @@
         android:choiceMode="singleChoice"
         android:divider="@color/list_divider"
         android:dividerHeight="1dp"
-        android:groupIndicator="@null" >
-    </ExpandableListView>
+        android:groupIndicator="@null"></ExpandableListView>
 
-  <!--  <android.support.v7.widget.RecyclerView
-        android:id="@+id/RecyclerView"
-        android:layout_width="320dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"
+    <!--  <android.support.v7.widget.RecyclerView
+          android:id="@+id/RecyclerView"
+          android:layout_width="320dp"
+          android:layout_height="match_parent"
+          android:layout_gravity="left"
 
-        android:background="#ffffff"
-        android:scrollbars="vertical">
+          android:background="#ffffff"
+          android:scrollbars="vertical">
 
-    </android.support.v7.widget.RecyclerView>-->
+      </android.support.v7.widget.RecyclerView>-->
 
 
 </android.support.v4.widget.DrawerLayout>

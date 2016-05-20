@@ -3,21 +3,21 @@
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item>Dashboard</item>
-        <item>Layout 1</item>
-        <item>Layout 2</item>
-        <item>Layout 3</item>
-        <item>Layout 4</item>
-        <item>Layout 5</item>
-        <item>Layout 6</item>
-        <item>Layout 7</item>
-        <item>Layout 8</item>
-        <item>Layout 9</item>
-        <item>Layout 10</item>
+        <item>News</item>
+        <item>Top News</item>
+        <item>World News</item>
+        <item>Canada</item>
+        <item>Politics</item>
+        <item>Business</item>
+        <item>health</item>
+        <item>Arts and Entertainment</item>
+        <item>Technology and Science</item>
+        <item>Sport</item>
+        <item>Region News</item>
     </string-array>
     <!-- Dash Board -->
     <string-array name="dash_board">
-        <item>one</item>
+        <!--  <item>one</item>-->
     </string-array>
 
     <!-- Before you file -->
