@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,11 +52,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        MainFragment frag = MainFragment.newInstance();
+        // habib hack
+       /* MainFragment frag = MainFragment.newInstance();
         android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.mylayout2, frag);
-        transaction.commit();
+        transaction.commit();*/
 
 
      /*   mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
@@ -113,6 +115,34 @@ public class MainActivity extends AppCompatActivity {
         // setting list adapter
         expListView.setAdapter(listAdapter);
         // expandable list view click listener
+        expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+                switch (groupPosition) {
+                    case 0:
+                        //Statements
+                        fragment = MainFragment.newInstance();
+                        Log.e("NEW ", "NEWS");
+                        break; //optional
+                    case 1:
+                        //Statements
+                        Log.e("TOP NEWS ", " TOP NEWA");
+                        break; //optional
+                    //You can have any number of case statements.
+                    default: //Optional
+                        //Statements
+                        Log.e("NEW ", "NEWS");
+                }
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frame_container, fragment).commit();
+                expListView.setItemChecked(groupPosition, true);
+                Drawer.closeDrawer(expListView);
+                return false;
+            }
+
+        });
+
 
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -127,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
                 view_Group.setBackgroundColor(Color.parseColor("#F21E1E"));
 
                 switch (groupPosition) {
+                    // Log.e("group", " " );
+
 
 				/*
                  * Here add your fragment class name for each case menu (eg.
@@ -181,6 +213,8 @@ public class MainActivity extends AppCompatActivity {
 
                             case 0:
                                 //  fragment = new One();
+                                fragment = MainFragment.newInstance();
+                                Log.e("child ", " world new");
                                 break;
                             case 1:
                                 //    fragment = new One();
@@ -439,6 +473,7 @@ public class MainActivity extends AppCompatActivity {
                     .findViewById(R.id.lblListHeader);
             // lblListHeader.setTypeface(null, Typeface.BOLD);
             lblListHeader.setText(headerTitle);
+
 
             // nav drawer icons from resources
             // navMenuIcons =

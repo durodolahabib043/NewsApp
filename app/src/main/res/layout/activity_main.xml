@@ -8,13 +8,14 @@
     android:elevation="7dp"
     android:fitsSystemWindows="true"
     tools:context="com.durodola.mobile.newsapp.MainActivity">
-    <!--  <FrameLayout
-          android:id="@+id/frame_container"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent" />-->
 
     <FrameLayout
         android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
